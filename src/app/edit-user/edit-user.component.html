@@ -1,0 +1,28 @@
+<form class="form-edit-user" [formGroup]="editUserForm" (ngSubmit)="editUserForm.valid && save()" novalidate
+  *ngIf="dataLoaded">
+  <h2 class="form-edit-user-heading">Changing details</h2>
+  <div class="form-group"
+       [ngClass]="{ 'has-error': (firstName.dirty || firstName.touched) && !firstName.valid }">
+    <input type="text" class="form-control" placeholder="First Name" name="firstName"
+           formControlName="firstName" required autofocus>
+  </div>
+  <div class="form-group"
+       [ngClass]="{ 'has-error': (lastName.dirty || lastName.touched) && !lastName.valid }">
+    <input type="text" class="form-control" placeholder="Last Name" name="lastName"
+           formControlName="lastName" required>
+  </div>
+  <div class="form-group"
+       [ngClass]="{ 'has-error': (phone.dirty || phone.touched) && !phone.valid }">
+    <input type="text" class="form-control" placeholder="Phone" name="phone"
+           formControlName="phone" required>
+  </div>
+  <div class="form-group"
+       [ngClass]="{ 'has-error': (password.dirty || password.touched) && !password.valid }">
+    <input type="password" class="form-control" placeholder="password" name="password"
+           formControlName="password" required>
+  </div>
+  <div class="form-group">
+    <input type="submit" class="btn btn-success" value="Save" [disabled]="loading" />
+    <input type="button" class="btn btn-primary" value="Back" [disabled]="loading" (click)="usersList()" />
+  </div>
+</form>

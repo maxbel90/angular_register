@@ -1,0 +1,26 @@
+<div class="table-responsive">
+  <table class="table">
+    <tr>
+      <th>Email</th>
+      <th>Name</th>
+      <th>Action</th>
+    </tr>
+    <ng-container *ngFor="let user of users">
+      <tr *ngIf="user._id!==currentUser._id">
+        <td>{{user.email}}</td>
+        <td>
+          <a [routerLink]="['/edit-user/', user._id]">
+            {{user.firstName}} {{user.lastName}}
+          </a>
+        </td>
+        <td>
+          <input type="button" value="Block" class="btn btn-warning" (click)="blockUser(user._id)"
+                 *ngIf="!user.blocked"/>
+          <input type="button" value="Unblock" class="btn btn-warning" (click)="unblockUser(user._id)"
+                 *ngIf="user.blocked"/>
+          <input type="button" value="Delete" class="btn btn-danger" (click)="deleteUser(user._id)"/>
+        </td>
+      </tr>
+      </ng-container>
+  </table>
+</div>

@@ -1,0 +1,11 @@
+<div>
+  <div>
+    Welcome, {{user.name}}
+  </div>
+  <div class="change-my-data" *ngIf="!user.isAdmin()">
+    <input type="button" value="BECOME ADMIN!" (click)="becomeAdmin()"/>
+  </div>
+  <div class="admin-all-data" *ngIf="user.isAdmin()">
+    You are admin
+  </div>
+</div>
